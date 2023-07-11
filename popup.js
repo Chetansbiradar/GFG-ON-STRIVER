@@ -26,7 +26,28 @@ function onChange(state) {
   })();
 }
 
+// called when checkbox is checked
+const activateExtension = () => {
+  onChange(true);
+  window.localStorage.setItem("gfg-extension", "active");
+};
+
+// called when checkbox is unchecked
+const deactivateExtension = () => {
+  window.localStorage.removeItem("gfg-extension");
+  onChange(false);
+};
+
 // bind the checkbox
-document.getElementById("activate-extension-checkbox").addEventListener("change", function(){
-  onChange(this.checked);
+const checkbox = document.getElementById("activate-extension-checkbox");
+checkbox.addEventListener("change", function () {
+  if (this.checked) activateExtension();
+  else deactivateExtension();
 });
+
+// get previous state of the checkbox
+const state = window.localStorage.getItem("gfg-extension");
+if (state === "active") {
+  checkbox.checked = true;
+  onChange(true);
+}
