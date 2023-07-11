@@ -1,16 +1,3 @@
-var browser = browser || chrome;
-
-// add a listener for message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.activate === true) {
-    activateExtension();
-    sendResponse({ message: "initiated GFG activation" });
-  } else {
-    removeChanges();
-    sendResponse({ message: "initiated GFG deactivation" });
-  }
-});
-
 // this defines where the gfg column should be added in the table
 const colPos = -1; // add at the end of the table
 let questions = []; // keep key value pairs of question id and question link
@@ -21,16 +8,37 @@ const url =
 
 /**
  * fetch the question list and make {questionid: questionLink} pairs and add to the global variable
+ * @returns {object} returns a dictionary with questionid: questionlink pairs
  */
 const fetchData = async function () {
   const data = await fetch(url); // fetch data
   const json = await data.json(); // convert to json
 
+  let ques_list = [];
+
   // add required data to the global variable
   json.forEach((ques) => {
-    questions[ques["question-id"]] = ques["question-link"];
+    ques_list[ques["question-id"]] = ques["question-link"];
   });
+
+  return ques_list;
 };
+
+var browser = browser || chrome;
+
+// add a listener for message
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.activate === true) {
+    fetchData().then((data) => {
+      questions = data;
+      activateExtension();
+    });
+    sendResponse({ message: "initiated GFG activation" });
+  } else {
+    removeChanges();
+    sendResponse({ message: "initiated GFG deactivation" });
+  }
+});
 
 /**
  * adds the heading for the gfg PL. addes table heading
