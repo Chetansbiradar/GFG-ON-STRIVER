@@ -26,14 +26,7 @@ function onChange(state) {
   })();
 }
 
-// bind the buttons with the function
-const activateBtnClicked = () => onChange(true);
-const deactivateBtnClicked = () => onChange(false);
-
-document
-  .getElementById("activate-extension-btn")
-  .addEventListener("click", activateBtnClicked);
-
-document
-  .getElementById("deactivate-extension-btn")
-  .addEventListener("click", deactivateBtnClicked);
+// bind the checkbox
+document.getElementById("activate-extension-checkbox").addEventListener("change", function(){
+  onChange(this.checked);
+});

@@ -1,13 +1,82 @@
 <html>
   <head>
-    Get back GFG!
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="content-script.css" />
+    <title>Code Now on GFG</title>
   </head>
   <body>
-    <button id="activate-extension-btn">Activate</button><br><br>
-    <button id="deactivate-extension-btn">Deactivate</button><br><br>
-    <a href="https://forms.gle/6uDTs3fd3VSKyogz6" target="_blank">Submit missing questions here</a><br><br>
+    <div class="wrapper">
+      <!-- title -->
+      <div class="title-container">
+        Bring <span style="color: green">GFG</span> back on
+        <span style="color: red">Striver</span>!
+      </div>
+      <!-- title -->
 
-    <span id="error-display" style="color: red;"></span>
+      <!-- the animated toggle button -->
+      <div class="switch-container">
+        <div class="switch-label">Activate Extension:</div>
+        <div class="container">
+          <input
+            type="checkbox"
+            class="checkbox"
+            id="activate-extension-checkbox"
+          />
+          <label class="switch" for="activate-extension-checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <!-- the animated toggle button -->
+
+      <!-- contribute section -->
+      <strong class="contribute-extension"
+        >If you want a question to be changed/added, you can submit the question
+        in the google form by clicking on button below.</strong
+      >
+      <a
+        href="https://forms.gle/6uDTs3fd3VSKyogz6"
+        target="_blank"
+        class="contribute-button"
+        role="button"
+        >CONTRIBUTE GFG LINK</a
+      >
+      <!-- contribute section -->
+
+      <!-- follow me section -->
+      <div class="social-media-ca">
+        <span>Connect with me: </span>
+
+        <!-- github -->
+        <div class="github-follow-me">
+          <a href="https://github.com/charitra1022" target="_blank"
+            ><img src="media/github-logo.png" alt=""
+          /></a>
+        </div>
+        <!-- github -->
+
+        <!-- linkedin -->
+        <div class="github-follow-me">
+          <a href="https://in.linkedin.com/in/charitra1022" target="_blank"
+            ><img src="media/linkedin-logo.png" alt=""
+          /></a>
+        </div>
+        <!-- linkedin -->
+      </div>
+      <!-- follow me section -->
+
+      <!-- footer -->
+      <footer>
+        <span>Made with</span>
+        <img class="heart-icon" src="media/red-heart.gif" alt="" />
+        <span>by Charitra Agarwal</span>
+      </footer>
+      <!-- footer -->
+    </div>
+    <!-- wrapper end -->
+
+    <span id="error-display" style="color: red; display: none;"></span>
   </body>
   <script src="popup.js"></script>
 </html>
