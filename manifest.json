@@ -16,7 +16,18 @@
     }],
 
     "action":{
+        "browser_style": true,
+        "default_icon": {
+            "48": "icons/logo.png",
+            "96": "icons/logo-96.png"
+        },
+        "default_title": "GFG on Striver",
         "default_popup": "popup.html",
-        "default_title": "Get back GFG!"
+        "theme_icons": [{
+            "light": "icons/logo.png",
+            "dark": "icons/logo.png",
+            "size": 48
+        }],
+        "show_matches": ["https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/"]
     }
 }
