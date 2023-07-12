@@ -1,9 +1,14 @@
 {
     "manifest_version": 3,
     "name": "GFG on Striver",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "author": "Charitra Agarwal",
     "description": "Extension that brings back GFG links on Striver's A2Z SDE Sheet.",
+
+    "icons": {
+        "48": "icons/logo.png",
+        "96": "icons/logo-96.png"
+    },
 
     "content_scripts": [{
         "matches": ["https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/*"],
