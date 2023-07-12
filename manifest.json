@@ -7,7 +7,6 @@
 
     "content_scripts": [{
         "matches": ["https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/*"],
-        "css": ["content-script.css"],
         "js": ["content-script.js"]
     }],
 
