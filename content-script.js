@@ -131,12 +131,18 @@ const processTopLevelTags = () => {
   }
 };
 
+const isActivated = () => {
+  const el = document.getElementsByClassName("gfg-extension");
+  if (el.length === 0) return false;
+  return true;
+};
+
 /**
  * start the extension and add links
  */
 const activateExtension = () => {
   // call the first function of the chain
-  processTopLevelTags();
+  if (!isActivated()) processTopLevelTags();
 };
 
 /**
