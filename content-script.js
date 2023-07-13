@@ -4,20 +4,26 @@ let questions = []; // keep key value pairs of question id and question link
 
 // url where all the data for questions are present
 const url =
-  "https://gist.github.com/charitra1022/3c963e85a7f5715f377db330c6bf5b87/raw";
+  "https://api.github.com/gists/3c963e85a7f5715f377db330c6bf5b87";
 
 /**
  * fetch the question list and make {questionid: questionLink} pairs and add to the global variable
  * @returns {object} returns a dictionary with questionid: questionlink pairs
  */
 const fetchData = async function () {
-  const data = await fetch(url); // fetch data
+  const options = {
+    method: "GET",
+    headers: { "Content-type": "application/json;charset=UTF-8" },
+  };
+  const data = await fetch(url, options); // fetch data
   const json = await data.json(); // convert to json
+  const mainData = JSON.parse(json.files['ques_list.json'].content)
+  console.log(mainData);
 
   let ques_list = [];
 
   // add required data to the global variable
-  json.forEach((ques) => {
+  mainData.forEach((ques) => {
     ques_list[ques["question-id"]] = ques["question-link"];
   });
 
