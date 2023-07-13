@@ -4,7 +4,7 @@ let questions = []; // keep key value pairs of question id and question link
 
 // url where all the data for questions are present
 const url =
-  "https://gist.githubusercontent.com/charitra1022/3c963e85a7f5715f377db330c6bf5b87/raw/35fc3393f094cebc10e95fdd7c3222de5d10c88e/ques_list.json";
+  "https://gist.github.com/charitra1022/3c963e85a7f5715f377db330c6bf5b87/raw";
 
 /**
  * fetch the question list and make {questionid: questionLink} pairs and add to the global variable
