@@ -28,12 +28,14 @@ function onChange(state) {
 
 // called when checkbox is checked
 const activateExtension = () => {
+  chrome.storage.local.set({ gfgExtensionState: true });
   onChange(true);
   window.localStorage.setItem("gfg-extension", "active");
 };
 
 // called when checkbox is unchecked
 const deactivateExtension = () => {
+  chrome.storage.local.set({ gfgExtensionState: false });
   window.localStorage.removeItem("gfg-extension");
   onChange(false);
 };
