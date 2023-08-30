@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "GFG on Striver",
-    "version": "1.0.1",
+    "version": "1.1.1",
     "author": "Charitra Agarwal",
     "description": "Extension that brings back GFG links on Striver's A2Z SDE Sheet.",
 
