@@ -32,6 +32,45 @@ const fetchData = async function () {
 
 var browser = browser || chrome;
 
+// function to handle changes in the target class
+function handleChildChanges() {
+  console.log("GFG Extention: Child elements changed");
+  // getting the toggle state
+  chrome.storage.local.get("gfgExtensionState", result => {
+    const toggle = result.gfgExtensionState;
+    if (toggle) {
+      console.log("GFG Extention: Toggle is turned on");
+      fetchData().then((data) => {
+        questions = data;
+        activateExtension();
+      });
+    }else{
+      console.log("GFG Extention: Toggle is turned off");
+    }
+  });
+}
+
+const observerConfig = { childList: true, subtree: true };
+
+const targetClassname = "topics-container"; // Targetting this class because it is the parent of all the questions
+
+let noChangesTimer;
+
+// Callback function to handle mutations
+function mutationCallback(mutationsList, observer) {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'childList' && mutation.target.classList.contains(targetClassname)) {
+      clearTimeout(noChangesTimer);
+      noChangesTimer = setTimeout(handleChildChanges, 1000);
+    }
+  }
+}
+
+const observer = new MutationObserver(mutationCallback);
+
+// Start observing the entire document and its descendants
+observer.observe(document, observerConfig);
+
 // add a listener for message
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.activate === true) {

@@ -9,10 +9,15 @@
         "48": "icons/logo.png",
         "96": "icons/logo-96.png"
     },
+    
+    "permissions": [
+        "storage"
+    ],
 
     "content_scripts": [{
         "matches": ["https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/*"],
-        "js": ["content-script.js"]
+        "js": ["content-script.js"],
+        "run_at": "document_end"
     }],
 
     "action":{
